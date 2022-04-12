@@ -16,22 +16,23 @@
   --color-black: #212121;
   --color-white: #f4f4f4;
   --color-red: #d31027;
+  --color-green-1: rgba(19, 78, 94, 1);
+  --color-green-2: rgba(113, 178, 128, 1);
 
-  /* background: rgb(19, 78, 94); */
   --moz-gradient: -moz-linear-gradient(
     133deg,
-    rgba(19, 78, 94, 1) 0%,
-    rgba(113, 178, 128, 1) 100%
+    var(--color-green-1) 0%,
+    var(--color-green-2) 100%
   );
   --webkit-gradient: -webkit-linear-gradient(
     133deg,
-    rgba(19, 78, 94, 1) 0%,
-    rgba(113, 178, 128, 1) 100%
+    var(--color-green-1) 0%,
+    var(--color-green-2) 100%
   );
   --gradient: linear-gradient(
     133deg,
-    rgba(19, 78, 94, 1) 0%,
-    rgba(113, 178, 128, 1) 100%
+    var(--color-green-1) 0%,
+    var(--color-green-2) 100%
   );
 
   --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#134e5e",endColorstr="#71b280",GradientType=1);
@@ -56,6 +57,22 @@ body {
   height: 100vh;
 }
 
+.result,
+section.challenge,
+section.challenge form {
+  width: 100%;
+}
+
+h1.heading__title,
+span.heading__subtitle,
+.description,
+section.challenge form,
+.result,
+.footer {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
 main.main {
   width: 400px;
   overflow: hidden;
@@ -76,6 +93,14 @@ h1.heading__title,
 h2.result__title {
   margin: 3rem 0 1.38rem;
   line-height: 1.3;
+  background: var(--moz-gradient);
+  background: var(--webkit-gradient);
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-filter: var(--filter);
+  filter: var(--filter);
 }
 
 h1.heading__title {
@@ -83,16 +108,7 @@ h1.heading__title {
   font-size: var(--font-size-h1-title);
   letter-spacing: 0.3rem;
   text-transform: uppercase;
-
   margin-top: 2rem;
-
-  background: var(--moz-gradient);
-  background: var(--webkit-gradient);
-  background: var(--gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: var(--filter);
 }
 
 span.emoji {
@@ -108,8 +124,7 @@ span.emoji {
 
 h1.heading__title,
 span.heading__subtitle {
-  transform: scale(0.8);
-  opacity: 0;
+  -webkit-animation: show 0.6s forwards;
   animation: show 0.6s forwards;
 }
 
@@ -118,9 +133,9 @@ span.heading__subtitle {
 }
 
 .description {
-  transform: scale(0.8);
-  opacity: 0;
+  -webkit-animation: show 0.6s forwards;
   animation: show 0.6s forwards;
+  -webkit-animation-delay: 0.6s;
   animation-delay: 0.6s;
 }
 
@@ -130,19 +145,14 @@ h2.result__title {
   letter-spacing: 0.2rem;
 }
 
-section.challenge {
-  width: 100%;
-}
-
 section.challenge form {
   display: flex;
   flex-direction: column;
   margin: 2rem 0;
-  width: 100%;
 
-  transform: scale(0.8);
-  opacity: 0;
+  -webkit-animation: show 0.6s forwards;
   animation: show 0.6s forwards;
+  -webkit-animation-delay: 1.8s;
   animation-delay: 1.8s;
 }
 
@@ -150,7 +160,7 @@ input,
 button {
   padding: 0.4rem 1rem;
   margin: 0.8rem 0;
-  border: 1px solid rgba(113, 178, 128, 1);
+  border: 1px solid var(--color-green-2);
   border-radius: 4px;
   font-family: var(--font-family-1);
   font-size: var(--font-size-body);
@@ -159,13 +169,13 @@ button {
 
 input {
   background: rgb(241, 250, 243);
-  color: rgba(19, 78, 94, 1);
+  color: var(--color-green-1);
 }
 
 input:focus,
 input:active {
   outline: none;
-  border-color: rgba(19, 78, 94, 1);
+  border-color: var(--color-green-1);
 }
 
 .error {
@@ -178,6 +188,7 @@ button {
   background: var(--moz-gradient);
   background: var(--webkit-gradient);
   background: var(--gradient);
+  -webkit-filter: var(--filter);
   filter: var(--filter);
   color: var(--color-white);
   letter-spacing: 0.1rem;
@@ -197,33 +208,21 @@ button.button--try-again {
 }
 
 .result {
-  width: 100%;
-  transform: scale(0.8);
-  opacity: 0;
+  -webkit-animation: show 0.6s forwards;
   animation: show 0.6s forwards;
-}
-
-.result__title {
-  background: var(--moz-gradient);
-  background: var(--webkit-gradient);
-  background: var(--gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: var(--filter);
 }
 
 .footer {
   font-size: var(--font-size-small);
   margin-top: 4rem;
-  opacity: 0;
-  transform: scale(0.8);
+  -webkit-animation: show 0.6s forwards;
   animation: show 0.6s forwards;
+  -webkit-animation-delay: 3s;
   animation-delay: 3s;
 }
 
 .footer a {
-  color: rgba(19, 78, 94, 1);
+  color: var(--color-green-1);
 }
 
 .displayed {
@@ -235,6 +234,7 @@ button.button--try-again {
 }
 
 .rotate {
+  -webkit-animation: rotate 0.6s forwards;
   animation: rotate 0.6s forwards;
 }
 
@@ -260,10 +260,35 @@ button.button--try-again {
   }
 }
 
+@-webkit-keyframes show {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes show {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@-webkit-keyframes rotate {
+  20% {
+    transform: rotate(1deg);
+  }
+  40% {
+    transform: rotate(-1deg);
+  }
+  60% {
+    transform: rotate(1deg);
+  }
+  80% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0);
   }
 }
 
