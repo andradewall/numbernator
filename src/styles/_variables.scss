@@ -1,0 +1,39 @@
+:root {
+  --font-family-1: 'Mukta', sans-serif;
+  --font-family-2: 'Raleway', sans-serif;
+
+  --font-size-body: 16px;
+  --font-size-body-mobile: 14px;
+  --font-size-small: 12px;
+  --font-size-small-mobile: 10px;
+
+  --font-size-h1-title: 1.953rem;
+  --font-size-h1-title-mobile: 1.563rem;
+
+  --font-size-h2-title: 3.052rem;
+  --font-size-h2-title-mobile: 1.953rem;
+
+  --color-black: #212121;
+  --color-white: #f4f4f4;
+  --color-red: #d31027;
+  --color-green-1: rgba(19, 78, 94, 1);
+  --color-green-2: rgba(113, 178, 128, 1);
+
+  --moz-gradient: -moz-linear-gradient(
+    133deg,
+    var(--color-green-1) 0%,
+    var(--color-green-2) 100%
+  );
+  --webkit-gradient: -webkit-linear-gradient(
+    133deg,
+    var(--color-green-1) 0%,
+    var(--color-green-2) 100%
+  );
+  --gradient: linear-gradient(
+    133deg,
+    var(--color-green-1) 0%,
+    var(--color-green-2) 100%
+  );
+
+  --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#134e5e",endColorstr="#71b280",GradientType=1);
+}
