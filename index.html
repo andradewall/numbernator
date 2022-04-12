@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS | #7DaysOfCode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&family=Raleway:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main class="main">
+      <header class="heading">
+        <h1 class="heading__title">Numbernator</h1>
+        <span class="heading__subtitle">Guess my number!</span>
+        <p class="description">
+          I think of a number between 0 and 10.<br />I challenge you to guess
+          what number did I think of with only 3 attempts.
+        </p>
+      </header>
+      <section class="challenge">
+        <form class="form">
+          <span class="emoji emoji--center">🔮</span>
+          <label for="number">So, tell me, what number did I think of?</label>
+          <input
+            type="number"
+            name="number"
+            id="number"
+            max="10"
+            min="0"
+            placeholder="Type"
+          />
+          <span class="error"
+            ><span class="emoji">😠</span> Hey, my number is between 0 and
+            10!</span
+          >
+          <button class="button button--send" type="submit">
+            That's your number!
+          </button>
+        </form>
+      </section>
+      <section class="result hidden">
+        <h2 class="result__title">
+          <span class="emoji">🥳</span> Congratulations, you rock!
+        </h2>
+        <span class="result__subtitle"
+          >I thought of number <span class="chosen-number">x</span> and you
+          guessed it with <span class="attempts">x</span> attempts!</span
+        >
+        <button class="button button--try-again">What about play again?</button>
+      </section>
+      <footer class="footer">
+        Coded with
+        <span class="emoji">🖤</span> by
+        <a href="https://github.com/andradewall">andradewall</a> for <a href="https://7daysofcode.io/">Alura's 7 Days Of Code
+      </footer>
+    </main>
+
+    <script type="text/javascript">
+      const chosenNumber = Math.floor(Math.random() * (10 - 0 + 1) + 0)
+      console.log(
+        '🚀 ~ file: index.html ~ line 55 ~ chosenNumber',
+        chosenNumber
+      )
+      let attempts = 0
+      const inputEl = document.querySelector('input#number')
+      const errorEl = document.querySelector('.error')
+      const buttonSendEl = document.querySelector('.button--send')
+      const buttonTryAgainEl = document.querySelector('.button--try-again')
+      const challengeEl = document.querySelector('.challenge')
+      const resultEl = document.querySelector('.result')
+      const chosenNumberEl = document.querySelector('.chosen-number')
+      const attemptsEl = document.querySelector('.attempts')
+
+      buttonSendEl.addEventListener('click', (event) => {
+        event.preventDefault()
+        attempts++
+        const playerNumber = document.querySelector('input#number').value * 1
+        if (playerNumber === chosenNumber) {
+          challengeEl.classList.add('hidden')
+          errorEl.classList.remove('displayed')
+
+          chosenNumberEl.innerText = chosenNumber
+          attemptsEl.innerText = attempts
+          resultEl.classList.remove('hidden')
+        } else {
+          errorEl.innerHTML =
+            '<span class="emoji">🙁</span> Sorry, you missed! Wanna try again?'
+          errorEl.classList.add('displayed')
+          buttonSendEl.classList.add('rotate')
+
+          setTimeout(() => {
+            buttonSendEl.classList.remove('rotate')
+          }, 600)
+        }
+      })
+
+      inputEl.addEventListener('input', (e) => {
+        if (e.target.value > 10 || e.target.value < 0) {
+          errorEl.innerHTML =
+            '<span class="emoji">😠</span> Hey, my number is between 0 and 10!'
+          errorEl.classList.add('displayed')
+          buttonSendEl.classList.add('disabled')
+          buttonSendEl.setAttribute('disabled', true)
+        } else {
+          errorEl.classList.remove('displayed')
+          buttonSendEl.classList.remove('disabled')
+          buttonSendEl.removeAttribute('disabled')
+        }
+      })
+
+      buttonTryAgainEl.addEventListener('click', (e) => {
+        e.preventDefault()
+        document.location.reload(true)
+      })
+    </script>
+  </body>
+</html>
